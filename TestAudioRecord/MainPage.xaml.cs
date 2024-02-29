@@ -29,10 +29,20 @@ namespace TestAudioRecord
                 if (!_audioRecorder.IsRecording)
                 {
                     await _audioRecorder.StartAsync();
+
+                    await CounterBtn.ScaleTo(1.2d, 200);
+                    await CounterBtn.ScaleTo(1.0d, 200);
+
+                    CounterBtn.Source = "pause.png";
                 }
                 else
                 {
                     var recordedAudio = await _audioRecorder.StopAsync();
+
+                    await CounterBtn.ScaleTo(1.2d, 200);
+                    await CounterBtn.ScaleTo(1.0d, 200);
+
+                    CounterBtn.Source = "play.png";
 
                     var player = AudioManager.Current.CreatePlayer(recordedAudio.GetAudioStream());
                     player.Play();
