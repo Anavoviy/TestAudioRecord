@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
+using TestAudioRecord.DataBaseFolder;
 
 namespace TestAudioRecord
 {
@@ -17,6 +18,7 @@ namespace TestAudioRecord
                 });
 
             builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddSingleton<DataBase>();
             builder.Services.AddTransient<MainPage>();
 
 #if DEBUG
